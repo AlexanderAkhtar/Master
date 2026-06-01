@@ -14,7 +14,7 @@ def run_early_prediction(df, target_col, tda_build_graph, build_paths, time_slic
     
     max_t = df["timestep"].max()
     
-    #depricated/unused function
+    
     if static_target:
         true_labels = (df.sort_values("timestep").groupby("agent_id").last().reset_index()[["agent_id", target_col]])
  
@@ -26,7 +26,7 @@ def run_early_prediction(df, target_col, tda_build_graph, build_paths, time_slic
  
         sliced_raw = df[df["timestep"] <= cutoff].copy()
         
-        # also depricated as static target is unsused
+        
         if static_target:
             sliced = sliced_raw.drop(columns=[target_col]).merge(true_labels, on="agent_id")
         else:
